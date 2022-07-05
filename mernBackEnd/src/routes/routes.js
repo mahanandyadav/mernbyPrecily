@@ -17,7 +17,7 @@ routes.get('/', async (req, res, next) => {
 routes.post('/', async (req, res) => {
 
     console.log("req.headers.cookie post method")
-    console.log(req.headers.cookie)
+    console.log(req.headers)
 
     // console.log(req.headers.cookie.split(';')[1])
     const user = new User(req.body)

@@ -15,31 +15,32 @@ const store = new mongoDBStore({
     collection: "mySessions"
 })
 
-app.use(cookieParser())
+app.use(cookieParser("secret shshs"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin",req.headers.origin);
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
     res.header("Access-Control-Allow-Headers", "*");
     res.header("Access-Control-Allow-Credentials", 'true')//true as string
-    res.header('Access-Control-Expose-Headers',
-        'Date, Etag, Access-Control-Allow-Origin, Set-Cookie, Access-Control-Allow-Credentials')
+    // res.header('Access-Control-Expose-Headers',
+    // 'Date, Etag, Access-Control-Allow-Origin, Set-Cookie, Access-Control-Allow-Credentials')
     if (req.method === "OPTIONS") {
         res.header("Access-Control-Allow-Methods", "GET,PATCH,POST,DELETE");
         return res.status(200).send()
     }
     next();
 });
+
 app.use(session({
     secret: "secret shshs",
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
-        path:"/",//if / the cookies will be sent for all paths
+        path: "/",//if / the cookies will be sent for all paths
         httpOnly: false,// if true, the cookie cannot be accessed from within the client-side javascript code.
         secure: false,// true->cookie has to be sent over HTTPS
-        maxAge: 24 * 60 * 60 * 10000,
-        sameSite: 'none',//- `none` will set the `SameSite` attribute to `None` for an explicit cross-site cookie.
+        maxAge: 2*24 * 60 * 60 * 1000,
+        sameSite: 'None',//- `none` will set the `SameSite` attribute to `None` for an explicit cross-site cookie.
     },
     store: store,
     resave: false,
