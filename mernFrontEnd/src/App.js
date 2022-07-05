@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 const url = 'http://localhost:3001'
+// const url = '/api/'
+console.log(document.cookie)
 
 function App() {
   const [inputValue, setInputValue] = useState({
@@ -25,11 +27,9 @@ function App() {
         const res = await fetch(`${url}`, {
           method: 'POST',
           headers: {
-            "mode": 'cors',
-            "Credentials": 'include',
+            // "Credentials": 'include',
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'WithCredentials': true,
+            // 'WithCredentials': true,
           },
           body: JSON.stringify(inputValue)
         })
@@ -61,6 +61,7 @@ function App() {
 
     </div>
   )
+
 }
 
 export default App;
