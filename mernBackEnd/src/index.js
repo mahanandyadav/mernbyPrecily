@@ -15,22 +15,19 @@ const store = new mongoDBStore({
     collection: "mySessions"
 })
 
-
-app.use(cookieParser("secret shshs"))
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-    // res.header("Access-Control-Allow-Origin", "http://192.168.0.198:3000");
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.header("Access-Control-Allow-Origin",req.headers.origin);
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Credentials", 'true')
+    res.header("Access-Control-Allow-Credentials", 'true')//true as string
+    res.header('Access-Control-Expose-Headers',
+        'Date, Etag, Access-Control-Allow-Origin, Set-Cookie, Access-Control-Allow-Credentials')
     if (req.method === "OPTIONS") {
         res.header("Access-Control-Allow-Methods", "GET,PATCH,POST,DELETE");
-        // return res.status(200).json({"message from mid":"successfull setup"});
-        return res.status(200).json({ "message": "hello from index.js" });//call only next
+        return res.status(200).send()
     }
     next();
 });
@@ -38,20 +35,17 @@ app.use(session({
     secret: "secret shshs",
     saveUninitialized: true,
     cookie: {
-        // path:"http://localhost:3001/api/",
-        // path:"/",//if / the cookies will be sent for all paths
+        path:"/",//if / the cookies will be sent for all paths
         httpOnly: false,// if true, the cookie cannot be accessed from within the client-side javascript code.
         secure: false,// true->cookie has to be sent over HTTPS
-        maxAge: 24 * 60 * 60 * 1000 ,
+        maxAge: 24 * 60 * 60 * 10000,
+        sameSite: 'none',//- `none` will set the `SameSite` attribute to `None` for an explicit cross-site cookie.
     },
     store: store,
     resave: false,
-    // unset:keep,
-    sameSite: 'none',//- `none` will set the `SameSite` attribute to `None` for an explicit cross-site cookie.
 }))
 
 app.use(routes);
-
 
 const port = process.env.PORT || 3001;
 app.listen((port), (error) => {
