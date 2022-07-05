@@ -33,4 +33,35 @@ routes.post('/', async (req, res) => {
     }
 })
 
+
+
+routes.patch('/', async (req, res) => {
+    const _id = req.query.id;
+    console.log("post patch")
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['name', 'email']
+    const isValidUpdateOperation = updates.every(update => allowedUpdates.includes(update))
+    if (!isValidUpdateOperation) {
+        return res.status(405).send({ error: 'Invalid updates!' })
+    }
+
+    try {
+        const user = await User.findOne({ _id })
+        if (!user) {
+            return res.status(404).send('user not found with id')
+        }
+        updates.forEach((update) => user[update] = req.body[update])
+        await user.save();
+
+        if (!req.session.patchClick) {
+            req.session.patchClick = 0
+            console.log('if runs')
+            console.log(req.session);
+        }
+        req.session.patchClick++
+        res.send({ "user": user, 'patchClick': req.session.patchClick });
+    } catch (e) {
+        res.send(e)
+    }
+})
 module.exports = routes;

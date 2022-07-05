@@ -51,6 +51,7 @@ app.use(session({
 
 
 
+app.use(routes);
 if (process.env.NODE_ENV === 'production' || true) {
     const loc = path.resolve(__dirname, '..', '..', 'mernFrontEnd', 'dist')
     app.use(express.static(loc))
@@ -59,7 +60,6 @@ if (process.env.NODE_ENV === 'production' || true) {
     });
     console.log('runnig build')
 }
-app.use(routes);
 const port = process.env.PORT || 3001;
 app.listen((port), (error) => {
     console.log(`lisning on port ${port}`)
