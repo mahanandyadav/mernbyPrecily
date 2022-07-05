@@ -28,7 +28,8 @@ function App() {
             "mode": 'cors',
             "Credentials": 'include',
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'WithCredentials': true,
           },
           body: JSON.stringify(inputValue)
         })
