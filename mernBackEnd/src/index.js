@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config()
 const path = require('path')
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
@@ -10,9 +11,9 @@ require('./model/model');
 require('./db/mongoose')
 
 const app = express();
-
+console.log(process.env.MONGO_DB_STRING)
 const store = new mongoDBStore({
-    uri: 'mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority',
+    uri: process.env.MONGO_DB_STRING,
     collection: "mySessions"
 })
 
@@ -52,7 +53,8 @@ app.use(session({
 
 
 app.use(routes);
-if (process.env.NODE_ENV === 'production' || true) {
+
+if (process.env.NODE_ENV === 'production') {
     const loc = path.resolve(__dirname, '..', '..', 'mernFrontEnd', 'dist')
     app.use(express.static(loc))
     app.get('*', (req, res) => {
