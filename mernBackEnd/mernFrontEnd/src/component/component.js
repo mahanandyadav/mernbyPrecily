@@ -7,7 +7,7 @@ const Comp = () => {
   const [user, setUser] = useState({
     name:'',
     email:'',
-    _id:''
+    id:''
   })
   const [inputValue, setInputValue] = useState({
     name: '',
@@ -36,12 +36,12 @@ const Comp = () => {
         })
         if (res.ok) {
           let d = await res.json()
-          console.log(d)
+          
           setUser({
             ...d.user,
-          })
+           id: d.user._id})
 
-        
+          console.log(user)
         } else {
           alert('fetch add failed')
         }
@@ -57,7 +57,7 @@ const Comp = () => {
     e.preventDefault()
     const addData = async () => {
       try {
-        const res = await fetch(`${url}/?id=${user._id}`, {
+        const res = await fetch(`${url}/?id=${user.id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
