@@ -1,121 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-const url = 'http://localhost:3001'
-// const url = '/api/'
-console.log(document.cookie)
+import Comp from './component/component'
+import Split from 'react-split'
+
+// console.log(document.cookie)
 
 function App() {
-  const [userId, setUserId] = useState('')
-  const [inputValue, setInputValue] = useState({
-    name: '',
-  })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setInputValue({
-      ...inputValue,
-      [name]: value
-    })
-  }
-
-  const handleOnAdd = (e) => {
-    e.preventDefault()
-    console.log(document.cookie)
-    const addData = async () => {
-      try {
-        const res = await fetch(`${url}`, {
-          method: 'POST',
-          headers: {
-            // "Credentials": 'include',
-            'Content-Type': 'application/json',
-            // 'WithCredentials': true,
-          },
-          body: JSON.stringify(inputValue)
-        })
-        if (res.ok) {
-          let d = await res.json()
-          setUserId(d.user._id)
-          console.log(d)
-        } else {
-          alert('fetch add failed')
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-    addData()
-    // setInputValue({})
-  }
-
-  const handleOnUpdate = (e) => {
-    e.preventDefault()
-    const addData = async () => {
-      try {
-        const res = await fetch(`${url}/?id=${userId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(inputValue)
-        })
-        if (res.ok) {
-          let d = await res.json()
-          console.log(d)
-        } else {
-          alert('fetch update failed')
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-    addData()
-    // setInputValue({})
-  }
-
-  let d;
-  const handleGetCount = (e) => {
-    e.preventDefault()
-    const updateFetch = async () => {
-      try {
-        const res = await fetch(url)
-        if (res.ok) {
-          d = await res.json()
-          console.log(d)
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-    updateFetch()
-
-  }
-
   return (
-    <div>
-      <h1>session with mongodb</h1>
-      <form className='form' >
-        <label>name</label>
-        <input
-          name='name'
-          onChange={(e) => handleChange(e)}
-          value={inputValue.name}
-        />
-        <label>email</label>
-        <input
-          name='email'
-          onChange={(e) => handleChange(e)}
-          value={inputValue.email}
-        />
-        <button onClick={handleOnAdd}>Add</button>
-        <button onClick={handleOnUpdate}>Update</button>
-        <button onClick={handleGetCount}>Count</button>
-      </form>
+    < >
+      <Split
+        style={{
+          height: '99vh',
+        }}
+        direction='vertical'
+        minSize={0}
+        sizes={[0, 50, 50]}
 
-    </div>
+      >
+        <div></div>
+        <Split
+          sizes={[0, 40, 60, 0]}
+          minSize={0}
+          direction="horizontal"
+          style={{ display: 'flex', flexDirection: 'row', width: '100vw' }}
+        >
+          <div></div>
+          <div id='divOne'>hello 1</div>
+          <div id='divTwo'>hello 2</div>
+          <div></div>
+        </Split>
+
+        <Split
+          sizes={[90, 10]}
+          minSize={100}
+          direction="vertical"
+          style={{ display: 'flex', flexDirection: 'column', }}
+        >
+          <div id='divThree'>divThree
+            <Split
+              sizes={[5, 90, 5]}
+              minSize={0}
+              direction='horizontal'
+              style={{ display: 'flex',flexDirection:'row', height: '100%' }}
+            >
+              <div style={{ backgroundColor: 'grey' }}>hare</div>
+              <div  style={{ backgroundColor: 'lightblue' }}>
+                <Comp/>
+              </div>
+              <div style={{ backgroundColor: 'grey' }}>hare</div>
+            </Split>
+
+          </div>
+          <div id='divFour'></div>
+        </Split>
+      </Split>
+    </>
   )
-
 }
 
 export default App;

@@ -4,7 +4,7 @@ const User = require('../model/model');
 const routes = express.Router();
 
 
-routes.get('/', async (req, res, next) => {
+routes.get('/count', async (req, res, next) => {
     console.log('req.headers.cookie get')
     // console.log(req.headers.cookie.split(';')[1].split('=')[1])
     res.send({

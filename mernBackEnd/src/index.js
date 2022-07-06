@@ -60,6 +60,7 @@ if (process.env.NODE_ENV === 'production' || true) {
     });
     console.log('runnig build')
 }
+
 const port = process.env.PORT || 3001;
 app.listen((port), (error) => {
     console.log(`lisning on port ${port}`)
