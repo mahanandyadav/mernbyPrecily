@@ -42,11 +42,11 @@ function App() {
               direction='horizontal'
               style={{ display: 'flex',flexDirection:'row', height: '100%' }}
             >
-              <div style={{ backgroundColor: 'grey' }}>hare</div>
+              <div style={{ backgroundColor: 'grey' }}>div-grey1</div>
               <div  style={{ backgroundColor: 'lightblue' }}>
                 <Comp/>
               </div>
-              <div style={{ backgroundColor: 'grey' }}>hare</div>
+              <div style={{ backgroundColor: 'grey' }}>div-grey2</div>
             </Split>
 
           </div>
