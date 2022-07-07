@@ -4,7 +4,7 @@ const User = require('../model/model');
 const routes = express.Router();
 
 
-routes.get('/count', async (req, res, next) => {
+routes.get('/api/count', async (req, res, next) => {
     console.log('req.headers.cookie get')
     // console.log(req.headers.cookie.split(';')[1].split('=')[1])
     res.send({
@@ -13,7 +13,7 @@ routes.get('/count', async (req, res, next) => {
     })
 })
 
-routes.post('/', async (req, res) => {
+routes.post('/api/', async (req, res) => {
 
     console.log("req.headers.cookie post method")
 
@@ -35,7 +35,7 @@ routes.post('/', async (req, res) => {
 
 
 
-routes.patch('/', async (req, res) => {
+routes.patch('/api/', async (req, res) => {
     const _id = req.query.id;
     console.log("post patch")
     const updates = Object.keys(req.body)

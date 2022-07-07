@@ -5,16 +5,18 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser');
 const mongoDBStore = require('connect-mongodb-session')(session)
 
-const routes = require('./routes/routes')
+const routes = require('./src/routes/routes')
 
-require('./model/model');
-require('./db/mongoose')
+require('./src/model/model');
+require('./src/db/mongoose')
 
 const app = express();
-console.log(process.env.MONGO_DB_STRING)
+console.log(process.env.MONGO_DB_STRING + "mongodb string from process.env")
 const store = new mongoDBStore({
-    uri: process.env.MONGO_DB_STRING,
+    uri: 'mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority',
     collection: "mySessions"
+},(error)=>{
+    console.log(`error in db connection index.js ${error}`)
 })
 
 app.use(cookieParser())
@@ -54,16 +56,16 @@ app.use(session({
 
 app.use(routes);
 
-if (process.env.NODE_ENV === 'production') {
-    const loc = path.resolve(__dirname, '..', '..', 'mernFrontEnd', 'dist')
+if (process.env.NODE_ENV === 'production' || true) {
+    const loc = path.resolve(__dirname,'ui','build')
     app.use(express.static(loc))
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(loc, 'index.html'))
     });
-    console.log('runnig build')
+    console.log('running build from '+loc)
 }
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 80;
 app.listen((port), (error) => {
     console.log(`lisning on port ${port}`)
 })

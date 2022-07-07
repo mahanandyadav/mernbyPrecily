@@ -3,11 +3,12 @@ require('./component.css')
 
 const Comp = () => {
 
-  const url = 'http://localhost:3001'
+  // const url = 'http://localhost:80'
+  const url = '/api'
   const [user, setUser] = useState({
     name:'',
     email:'',
-    id:''
+    _id:''
   })
   const [inputValue, setInputValue] = useState({
     name: '',
@@ -36,12 +37,12 @@ const Comp = () => {
         })
         if (res.ok) {
           let d = await res.json()
-          
+          console.log(d)
           setUser({
             ...d.user,
-           id: d.user._id})
+          })
 
-          console.log(user)
+        
         } else {
           alert('fetch add failed')
         }
@@ -57,7 +58,7 @@ const Comp = () => {
     e.preventDefault()
     const addData = async () => {
       try {
-        const res = await fetch(`${url}/?id=${user.id}`, {
+        const res = await fetch(`${url}/?id=${user._id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
