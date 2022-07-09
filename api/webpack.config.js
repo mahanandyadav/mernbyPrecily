@@ -18,9 +18,10 @@ if(environment==='test'){
     }
 }else if(environment==='production'){
     ENVIRONMENT_VARIABLES={
-        'process.env.ENVIRONMENT':JSON.stringify('production'),
-        'process.env.PORT':JSON.stringify('80'),
-        'process.env.MONGO_CONNECTION_STRING':JSON.stringify('mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority'),
+        'process.env.ENVIRONMENT':JSON.stringify(process.env.ENVIRONMENT),
+        'process.env.PORT':JSON.stringify(process.env.PORT),
+        'process.env.MNY':JSON.stringify(process.env.MNY),
+        'process.env.MONGO_DB_STRING':JSON.stringify(process.env.MONGO_DB_STRING),
     }
 }
 

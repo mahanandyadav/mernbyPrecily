@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-// mongoose.connect(process.env.MONGO_DB_STRING, {
-    mongoose.connect('mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_DB_STRING, {
+    // mongoose.connect('mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

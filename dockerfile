@@ -8,6 +8,9 @@ RUN ls
 # api build
 FROM node:14-slim AS api-build
 WORKDIR /usr/src
+ENV MNY=mahanand_yadav\
+    PORT=80\
+    MONGO_DB_STRING=mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority
 COPY api ./api/
 RUN cd  api && npm install && ENVIRONMENT=production npm run build
 RUN ls
