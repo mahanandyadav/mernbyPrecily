@@ -51,7 +51,7 @@ const Comp = () => {
       }
     }
     addData()
-    // setInputValue({})
+    setInputValue({})
   }
 
   const handleOnUpdate = (e) => {
@@ -76,7 +76,7 @@ const Comp = () => {
       }
     }
     addData()
-    // setInputValue({})
+    setInputValue({})
   }
 
   let d;
@@ -99,7 +99,6 @@ const Comp = () => {
 
   return (
     <div>
-      {/* <h1>session with mongodb</h1> */}
       <form className='form' >
         <label>name</label>
         <input
