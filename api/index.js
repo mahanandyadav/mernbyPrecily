@@ -11,7 +11,9 @@ require('./src/model/model');
 require('./src/db/mongoose')
 
 const app = express();
-console.log(process.env.MNY)
+console.log(process.env.MNY)//testing veriable 
+
+//connecting sessin to DB
 const store = new mongoDBStore({
     uri: process.env.MONGO_DB_STRING,
     collection: "mySessions"
@@ -23,6 +25,7 @@ const store = new mongoDBStore({
     }
 })
 
+//express middelwares
 app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -41,6 +44,7 @@ app.use((req, res, next) => {
     next();
 })*/
 
+//configuring session middelware
 app.use(session({
     secret: "mny",
     saveUninitialized: true,
@@ -57,9 +61,10 @@ app.use(session({
 }))
 
 
-
+//addressing routes
 app.use(routes);
 
+//serving api build
 if (process.env.ENVIRONMENT === 'production') {
     const loc = path.resolve(__dirname,'ui','build')
     app.use(express.static(loc))
@@ -69,6 +74,7 @@ if (process.env.ENVIRONMENT === 'production') {
     console.log('running build from '+loc)
 }
 
+//listening to port
 const port = process.env.PORT || 80;
 app.listen((port), (error) => {
     console.log(`lisning on port ${port}`)

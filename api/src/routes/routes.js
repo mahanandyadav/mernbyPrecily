@@ -3,7 +3,7 @@ const User = require('../model/model');
 
 const routes = express.Router();
 
-
+//get route to count button click
 routes.get('/api/count', async (req, res, next) => {
     console.log('call /api/count get method')
     res.send({
@@ -12,6 +12,7 @@ routes.get('/api/count', async (req, res, next) => {
     })
 })
 
+//post route to post new data
 routes.post('/api/', async (req, res) => {
 
     console.log("call /api/ post method")
@@ -32,7 +33,7 @@ routes.post('/api/', async (req, res) => {
 })
 
 
-
+//patch routes to update data
 routes.patch('/api/', async (req, res) => {
     const _id = req.query.id;
     console.log("call /api/ patch method")

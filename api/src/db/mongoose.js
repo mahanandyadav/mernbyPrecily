@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+
+//connecting to DB 
 mongoose.connect(process.env.MONGO_DB_STRING, {
     useNewUrlParser: true,
     useCreateIndex: true,

@@ -51,7 +51,10 @@ const Comp = () => {
       }
     }
     addData()
-    setInputValue({})
+    setInputValue({
+      name:'',
+      email:''
+    })
   }
 
   const handleOnUpdate = (e) => {
@@ -76,7 +79,10 @@ const Comp = () => {
       }
     }
     addData()
-    setInputValue({})
+    setInputValue({
+      name:'',
+      email:''
+    })
   }
 
   let d;
