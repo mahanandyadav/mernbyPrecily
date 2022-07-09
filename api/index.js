@@ -60,7 +60,7 @@ app.use(session({
 
 app.use(routes);
 
-if (process.env.ENVIRONMENT === 'production' || true) {
+if (process.env.ENVIRONMENT === 'production') {
     const loc = path.resolve(__dirname,'ui','build')
     app.use(express.static(loc))
     app.get('*', (req, res) => {

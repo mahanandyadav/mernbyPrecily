@@ -5,7 +5,7 @@ const routes = express.Router();
 
 
 routes.get('/api/count', async (req, res, next) => {
-    console.log('req.headers.cookie get')
+    console.log('call /api/count get method')
     res.send({
         "post": req.session.postClick,
         "patch": req.session.patchClick
@@ -14,7 +14,7 @@ routes.get('/api/count', async (req, res, next) => {
 
 routes.post('/api/', async (req, res) => {
 
-    console.log("req.headers.cookie post method")
+    console.log("call /api/ post method")
 
     const user = new User(req.body)
 
@@ -22,7 +22,7 @@ routes.post('/api/', async (req, res) => {
         await user.save()
         if (!req.session.postClick) {
             req.session.postClick = 0
-            console.log(req.session);
+            console.log('session postClick initialize')
         }
         req.session.postClick++
         res.send({ "user": user, "postClick": req.session.postClick });
@@ -35,7 +35,7 @@ routes.post('/api/', async (req, res) => {
 
 routes.patch('/api/', async (req, res) => {
     const _id = req.query.id;
-    console.log("post patch")
+    console.log("call /api/ patch method")
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email']
     const isValidUpdateOperation = updates.every(update => allowedUpdates.includes(update))
@@ -53,8 +53,8 @@ routes.patch('/api/', async (req, res) => {
 
         if (!req.session.patchClick) {
             req.session.patchClick = 0
-            console.log('if runs')
-            console.log(req.session);
+            console.log('session patchClick initialize')
+
         }
         req.session.patchClick++
         res.send({ "user": user, 'patchClick': req.session.patchClick });

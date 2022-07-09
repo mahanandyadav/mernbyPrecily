@@ -10,7 +10,8 @@ FROM node:14-slim AS api-build
 WORKDIR /usr/src
 ENV MNY=mahanand_yadav\
     PORT=80\
-    MONGO_DB_STRING=mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority
+    MONGO_DB_STRING=mongodb://mern-precily-cosmosdb:jb2RAayZNYpYRxMFLG6JNx6wugqBSKrxqsIqMHnLqSMzlJiy1qERze5chmclup1raXtTpf12yOqS1hKhPoO9jw==@mern-precily-cosmosdb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@mern-precily-cosmosdb@
+    # MONGO_DB_STRING=mongodb+srv://mny:QTCdKtIouJJWbUYN@cluster0.zxfwd.mongodb.net/MernDocker?retryWrites=true&w=majority
 COPY api ./api/
 RUN cd  api && npm install && ENVIRONMENT=production npm run build
 RUN ls
