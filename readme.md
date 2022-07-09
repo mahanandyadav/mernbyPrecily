@@ -9,7 +9,7 @@
 * API
    * Add : On clicking Add button, if there is any data it get clear and user is be able to add new data.
    * Update: On clicking this button user is be able to update the data.
-   * Count: API to show number of times(count), user has called ADD and Update API.
+   * Count: API to show the number of times(count), user has called ADD and Update API.
    * note: api response is in browser console
 
 

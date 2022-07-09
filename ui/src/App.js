@@ -24,7 +24,7 @@ function App() {
           style={{ display: 'flex', flexDirection: 'row', width: '100vw' }}
         >
           <div></div>
-          <div id='divOne'>hello 1</div>
+          <div id='divOne'>api response can be checked in console</div>
           <div id='divTwo'>hello 2</div>
           <div></div>
         </Split>
