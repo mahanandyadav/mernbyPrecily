@@ -14,8 +14,3 @@ input{
   max-width: 100%;;
 }
 
-@container (min-height: 150px) {
-  form{
-      flex-direction:row;
-  }
-}
