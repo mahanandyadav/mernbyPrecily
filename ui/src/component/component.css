@@ -9,3 +9,13 @@ form{
   align-items: center;
   /* max-width: 100vw; */
 }
+
+input{
+  max-width: 100%;;
+}
+
+@container (min-height: 150px) {
+  form{
+      flex-direction:row;
+  }
+}

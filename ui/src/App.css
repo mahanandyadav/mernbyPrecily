@@ -1,14 +1,29 @@
 div #divOne {
-  background-color: grey;
+  background-color: #9ADCFF;
 }
 div #divTwo {
-  background-color: black;
+  background-color: #FFF89A;
 }
 
 div #divThree {
-  background-color: rgb(59, 22, 22);
+  /* background-color: rgb(59, 22, 22); */
 }
 div #divFour {
-  background-color: rgb(18, 7, 55);
+  /* background-color: rgb(18, 7, 55); */
 }
 
+.gutter {
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-vertical {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+  cursor: n-resize;
+}
+
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+  cursor: e-resize;
+}

@@ -30,23 +30,23 @@ function App() {
         </Split>
 
         <Split
-          sizes={[90, 10]}
+          sizes={[100, 0]}
           minSize={100}
           direction="vertical"
           style={{ display: 'flex', flexDirection: 'column', }}
         >
-          <div id='divThree'>divThree
+          <div id='divThree'>
             <Split
-              sizes={[5, 90, 5]}
+              sizes={[0, 100, 0]}
               minSize={0}
               direction='horizontal'
               style={{ display: 'flex',flexDirection:'row', height: '100%' }}
             >
-              <div style={{ backgroundColor: 'grey' }}>div-grey1</div>
-              <div  style={{ backgroundColor: 'lightblue' }}>
+              <div ></div>
+              <div  style={{ backgroundColor: '#FFB2A6' }}>
                 <Comp/>
               </div>
-              <div style={{ backgroundColor: 'grey' }}>div-grey2</div>
+              <div ></div>
             </Split>
 
           </div>
