@@ -2,15 +2,15 @@
 
 
 ## Overview
-* React draggable components, 
-    Re-size the components by dragging them from any of the sides.
-    The neighbor components expand or shrink based on re-sizing operations performed on the target component.
-    The layout is responsive on all laptop devices.
+* React draggable components
+  * Re-size the components by dragging them from any of the sides.
+  * The neighbor components expand or shrink based on re-sizing operations performed on the target component.
+  *  The layout is responsive on all laptop devices.
 * API
-    1) Add : On clicking Add button, if there is any data it get clear and user is be able to add new data.
-    2) Update: On clicking this button user is be able to update the data.
-    3) Count: API to show number of times(count), user has called ADD and Update API.
-    4) note: api response is in browser console
+   * Add : On clicking Add button, if there is any data it get clear and user is be able to add new data.
+   * Update: On clicking this button user is be able to update the data.
+   * Count: API to show number of times(count), user has called ADD and Update API.
+   * note: api response is in browser console
 
 
 
