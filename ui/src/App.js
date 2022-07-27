@@ -2,9 +2,10 @@ import './App.css';
 import Comp from './component/component'
 import Split from 'react-split'
 
-// console.log(document.cookie)
+
 
 function App() {
+  console.log('by mahanand yadav')
   return (
     < >
       <Split
