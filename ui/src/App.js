@@ -5,7 +5,7 @@ import Split from 'react-split'
 
 
 function App() {
-  console.log('by mahanand yadav')
+  console.log('by mahanand yadav edit' )
   return (
     < >
       <Split
