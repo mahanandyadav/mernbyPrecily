@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mernstack.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_1aa9037c32994376af6cb6472e19ab81 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_2d1b18fae78a443b9f6061829fdfc822 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_f0a53e9d13e94cd6bea925d159d65f53 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_568869ce6ee943808706b59172e06b74 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mernstack.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1aa9037c32994376af6cb6472e19ab81 }}/mernprecily:${{ github.sha }}
+        tags: mernstack.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f0a53e9d13e94cd6bea925d159d65f53 }}/mernstack/mernprecily:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'react-split-session'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ee959a551dc44857b29ce66752de6628 }}
-        images: 'mernstack.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1aa9037c32994376af6cb6472e19ab81 }}/mernprecily:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b4c1676537e6490d8a94b880ca7fb653 }}
+        images: 'mernstack.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f0a53e9d13e94cd6bea925d159d65f53 }}/mernstack/mernprecily:${{ github.sha }}'
